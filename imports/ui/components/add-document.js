@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { insertDocument } from '../../api/documents/methods.js';
 
-const handleInsertDocument = () => {
+const handleInsertDocument = (event) => {
+  event.preventDefault();
   const title = document.querySelector('[name="title"]');
   const body = document.querySelector('[name="body"]');
 
@@ -41,6 +42,6 @@ export const AddDocument = () => (
         placeholder="What do you want to say?"
       />
     </FormGroup>
-    <Button onClick={ handleInsertDocument } bsStyle="success">Add Document</Button>
+    <Button type="submit" bsStyle="success">Add Document</Button>
   </form>
 );

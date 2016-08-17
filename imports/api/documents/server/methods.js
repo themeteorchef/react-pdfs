@@ -15,7 +15,7 @@ export const downloadDocument = new ValidatedMethod({
     const document = Documents.findOne({ _id: documentId });
     const fileName = `document_${document._id}.pdf`;
     return generateComponentAsPDF({ component: Document, props: { document }, fileName })
-    .then((base64String) => base64String)
+    .then((result) => result)
     .catch((error) => { throw new Meteor.Error('500', error); });
   },
 });
