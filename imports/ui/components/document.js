@@ -11,7 +11,6 @@ const downloadPDF = (event) => {
   const { target } = event;
   const documentId = event.target.getAttribute('data-id');
   target.innerHTML = '<em>Downloading...</em>';
-  target.classList.add('downloading');
   Meteor.call('documents.download', { documentId }, (error, response) => {
     if (error) {
       Bert.alert(error.reason, 'danger');
@@ -19,7 +18,6 @@ const downloadPDF = (event) => {
       const blob = base64ToBlob(response.base64);
       fileSaver.saveAs(blob, response.fileName);
       target.innerHTML = 'Download';
-      target.classList.remove('downloading');
     }
   });
 }
